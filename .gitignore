@@ -1,0 +1,6 @@
+.DS_Store
+
+sam-and-geoff/*
+!sam-and-geoff/config.yml
+!sam-and-geoff/readme.md
+!sam-and-geoff/src
