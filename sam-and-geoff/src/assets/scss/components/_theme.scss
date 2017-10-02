@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald|Vast+Shadow');
+
+body {
+	background-color: rgb(105, 178, 236);
+}
+
+.splash--text {
+	background-color: rgba(15, 15, 15, .25);
+	color: #fff;
+	text-align: center;
+	&.row {
+		position: fixed;
+		width: 100%;
+		max-width: 100%;
+		bottom: 10vh;
+		@include breakpoint(portrait) {
+			top: 10vh;
+			bottom: auto;
+		}
+	}
+	h1 {
+		font-family: 'Vast Shadow', cursive;
+		span {
+			font-family: 'Oswald', sans-serif;
+			position: relative;
+			top: 6px;
+		}
+	}
+	h2 {
+		font-family: 'Oswald', sans-serif;
+		font-size: 1rem;
+		text-transform: uppercase;
+	}
+}
+
+.splash--image {
+	background-position: 0 0;
+	background-size: cover;
+	background-repeat: no-repeat;
+	display: block;
+	height: 100vh;
+	width: 100vw;
+	@include breakpoint(small only) {
+		background-position: 50% 65%;
+	}
+	@include breakpoint(medium only) {
+		background-position: 50% 65%;
+	}
+}
+
+.credits {
+	font-family: 'Oswald', sans-serif;
+	position: absolute;
+	bottom: 5px;
+	right: 0;
+	a {
+		background-color: rgba(255, 255, 255, 0);
+		text-shadow: 0 0 5px rgba(105, 178, 236, .85);
+		display: inline-block;
+		color: rgba(255, 255, 255, .65);
+		padding: 5px;
+		transition: all 400ms;
+		&:hover {
+			background-color: rgba(105, 178, 236, .5);
+			color: rgba(255, 255, 255, .75);
+		}
+	}
+}
+
