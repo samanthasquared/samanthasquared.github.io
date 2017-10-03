@@ -24,12 +24,20 @@ body {
 			font-family: 'Oswald', sans-serif;
 			position: relative;
 			top: 6px;
+			@include breakpoint(small only) {
+				top: 3px;
+			}
 		}
 	}
 	h2 {
 		font-family: 'Oswald', sans-serif;
 		font-size: 1rem;
 		text-transform: uppercase;
+		span {
+			font-size: .5rem;
+			position: relative;
+			top: -3px;
+		}
 	}
 }
 
@@ -42,6 +50,9 @@ body {
 	width: 100vw;
 	@include breakpoint(small only) {
 		background-position: 50% 65%;
+		@include breakpoint(landscape) {
+			background-position: 50% 55%;
+		}
 	}
 	@include breakpoint(medium only) {
 		background-position: 50% 65%;
