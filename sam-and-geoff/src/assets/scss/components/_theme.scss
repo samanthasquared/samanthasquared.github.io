@@ -50,12 +50,12 @@ body {
 	width: 100vw;
 	@include breakpoint(small only) {
 		background-position: 50% 65%;
-		@include breakpoint(landscape) {
-			background-position: 50% 55%;
-		}
 	}
 	@include breakpoint(medium only) {
 		background-position: 50% 65%;
+	}
+	@media screen and #{breakpoint(landscape)} and #{breakpoint(medium down)} {
+	 	background-position: 50% 55%;
 	}
 }
 
