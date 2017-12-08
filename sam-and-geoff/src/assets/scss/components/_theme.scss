@@ -1,7 +1,80 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald|Vast+Shadow');
+@import url('https://fonts.googleapis.com/css?family=Oswald|Vast+Shadow|Playfair+Display');
+
+$bgColor: rgb(157, 199, 224);
+$mainShadow: 1px 1px 0 rgba(255, 255, 255, .25);
+$linkColor: #1779ba;
+$linkColorHover: #fff;
 
 body {
-	background-color: rgb(105, 178, 236);
+	background-color: $bgColor;
+	font-family: 'Oswald', sans-serif;
+}
+
+.content-area {
+	padding: 20vh 10vw;
+
+	@include breakpoint(small only) {
+		padding: 10vh 5vw;
+	}
+
+	h1, h2, h3 {
+		color: rgb(12, 61, 92);
+		font-family: 'Playfair Display', 'Georgia', serif;
+		text-shadow: $mainShadow;
+	}
+
+	p {
+		font-size: 1.25rem;
+		margin-bottom: 1.5rem;
+	}
+
+	a {
+		border-bottom: 2px solid transparent;
+		transition: ease 400ms;
+		&:hover {
+			border-bottom: 2px solid $linkColor;
+		}
+	}
+
+	.callout {
+		h2 {
+			font-family: 'Vast Shadow', cursive;
+			text-align: center;
+			@include breakpoint(small only) {
+				font-size: 2.25em;
+				text-align: left;
+			}
+		}
+		h3 {
+			@include breakpoint(small only) {
+				font-size: 2em;
+			}
+		}
+		@include breakpoint(large only) {
+			.row {
+				margin-top: 50px;
+			}
+		}
+	}
+}
+
+a.btn {
+	background-color: rgba(0,0,0,0);
+	border: 2px solid $linkColor;
+	color: $linkColor;
+	box-shadow: $mainShadow;
+	display: inline-block;
+	padding: 10px 20px;
+	font-size: 20px;
+	&:hover {
+		background-color: rgba(23, 121, 186, .5);
+		border: 2px solid $linkColorHover;
+		color: $linkColorHover;
+	}
+	@include breakpoint(small only) {
+		text-align: center;
+		width: 100%;
+	}
 }
 
 .splash--text {
@@ -9,7 +82,8 @@ body {
 	color: #fff;
 	text-align: center;
 	&.row {
-		position: fixed;
+		//position: fixed;
+		position: absolute;
 		width: 100%;
 		max-width: 100%;
 		bottom: 10vh;
@@ -21,7 +95,7 @@ body {
 	h1 {
 		font-family: 'Vast Shadow', cursive;
 		span {
-			font-family: 'Oswald', sans-serif;
+			font-family: 'Playfair Display', 'Georgia', serif;
 			position: relative;
 			top: 6px;
 			@include breakpoint(small only) {
@@ -42,11 +116,13 @@ body {
 }
 
 .splash--image {
+	background-attachment: fixed;
 	background-position: 0 0;
 	background-size: cover;
 	background-repeat: no-repeat;
 	display: block;
-	height: 100vh;
+	position: relative;
+	height: 110vh;
 	width: 100vw;
 	@include breakpoint(small only) {
 		background-position: 50% 65%;
@@ -56,6 +132,26 @@ body {
 	}
 	@media screen and #{breakpoint(landscape)} and #{breakpoint(medium down)} {
 	 	background-position: 50% 55%;
+	}
+
+	.transition--bottom {
+		background: linear-gradient( rgba(0,0,0,0), $bgColor);
+		display: block;
+		bottom: 0;
+		content: '';
+		position: absolute;
+		height: 100px;
+		width: 100%;
+	}
+
+	.transition--top {
+		background: linear-gradient( $bgColor, rgba(0,0,0,0));
+		display: block;
+		top: 0;
+		content: '';
+		position: absolute;
+		height: 100px;
+		width: 100%;
 	}
 }
 
