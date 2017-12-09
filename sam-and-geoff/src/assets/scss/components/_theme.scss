@@ -36,14 +36,18 @@ body {
 		}
 	}
 
+	.text--centered {
+		margin: 20px 0;
+		text-align: center;
+		@include breakpoint(small only) {
+			font-size: 2.25em;
+			text-align: left;
+		}
+	}
+
 	.callout {
 		h2 {
-			font-family: 'Vast Shadow', cursive;
-			text-align: center;
-			@include breakpoint(small only) {
-				font-size: 2.25em;
-				text-align: left;
-			}
+			font-family: 'Vast Shadow', 'Georgia', serif;
 		}
 		h3 {
 			@include breakpoint(small only) {
@@ -93,7 +97,7 @@ a.btn {
 		}
 	}
 	h1 {
-		font-family: 'Vast Shadow', cursive;
+		font-family: 'Vast Shadow', 'Georgia', serif;
 		span {
 			font-family: 'Playfair Display', 'Georgia', serif;
 			position: relative;
@@ -116,7 +120,7 @@ a.btn {
 }
 
 .splash--image {
-	background-attachment: fixed;
+	//background-attachment: fixed;//breaks ios
 	background-position: 0 0;
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -132,6 +136,9 @@ a.btn {
 	}
 	@media screen and #{breakpoint(landscape)} and #{breakpoint(medium down)} {
 	 	background-position: 50% 55%;
+	}
+	@include breakpoint(large) {
+		background-attachment: fixed;
 	}
 
 	.transition--bottom {
