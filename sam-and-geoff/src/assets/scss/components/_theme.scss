@@ -1,17 +1,32 @@
-@import url('https://fonts.googleapis.com/css?family=Oswald|Vast+Shadow|Playfair+Display');
+@import url('https://fonts.googleapis.com/css?family=Oswald|Raleway|Vast+Shadow|Playfair+Display');
 
-$bgColor: rgb(157, 199, 224);
+$colorTeal: #52bec7;
+$colorBlueLight: rgb(157, 199, 224);
+$colorBlueVLight: #c8eaff;
+
+$bgColor: $colorBlueLight;
+
 $mainShadow: 1px 1px 0 rgba(255, 255, 255, .25);
 $linkColor: #1779ba;
 $linkColorHover: #fff;
 
 body {
 	background-color: $bgColor;
-	font-family: 'Oswald', sans-serif;
+	background: radial-gradient($colorBlueVLight, $bgColor);
+	font-family: 'Raleway', sans-serif;
+	@include breakpoint(medium) {
+		background: radial-gradient($colorBlueVLight, $bgColor, $colorTeal);
+	}
 }
 
 .content-area {
+	//background: radial-gradient($colorBlueVLight, $bgColor, $colorTeal);
 	padding: 20vh 10vw;
+	position: relative;
+	&.content-area--full-width {
+		max-width: 100%;
+		padding: 0;
+	}
 
 	@include breakpoint(small only) {
 		padding: 10vh 5vw;
@@ -23,6 +38,15 @@ body {
 		text-shadow: $mainShadow;
 	}
 
+	hr {
+		border-bottom: 1px solid #c1dff1;
+		
+		width: 70%;
+		@include breakpoint(medium) {
+			margin: 30px auto -10px;
+		}
+	}
+
 	p {
 		font-size: 1.25rem;
 		margin-bottom: 1.5rem;
@@ -30,6 +54,7 @@ body {
 
 	a {
 		border-bottom: 2px solid transparent;
+		font-weight: bold;
 		transition: ease 400ms;
 		&:hover {
 			border-bottom: 2px solid $linkColor;
@@ -40,7 +65,6 @@ body {
 		margin: 20px 0;
 		text-align: center;
 		@include breakpoint(small only) {
-			font-size: 2.25em;
 			text-align: left;
 		}
 	}
@@ -48,6 +72,9 @@ body {
 	.callout {
 		h2 {
 			font-family: 'Vast Shadow', 'Georgia', serif;
+			@include breakpoint(small only) {
+				font-size: 2.25em;
+			}
 		}
 		h3 {
 			@include breakpoint(small only) {
@@ -149,26 +176,28 @@ a.btn {
 	@include breakpoint(large) {
 		background-attachment: fixed;
 	}
+}
 
-	.transition--bottom {
-		background: linear-gradient( rgba(0,0,0,0), $bgColor);
-		display: block;
-		bottom: 0;
-		content: '';
-		position: absolute;
-		height: 100px;
-		width: 100%;
-	}
+.transition--bottom,
+.transition--top {
+	display: block;
+	height: 100px;
+	width: 100vw;
+	left: 50%;
+	right: 50%;
+	margin-left: -50vw;
+	margin-right: -50vw;
+	position: absolute;
+}
 
-	.transition--top {
-		background: linear-gradient( $bgColor, rgba(0,0,0,0));
-		display: block;
-		top: 0;
-		content: '';
-		position: absolute;
-		height: 100px;
-		width: 100%;
-	}
+.transition--bottom {
+	background: linear-gradient( rgba(0,0,0,0), $bgColor);
+	bottom: 0;
+}
+
+.transition--top {
+	background: linear-gradient( $bgColor, rgba(0,0,0,0));
+	top: 0;
 }
 
 .credits {
@@ -190,3 +219,16 @@ a.btn {
 	}
 }
 
+.embed-map {
+	min-height: 95vh;
+}
+
+.instant-img {
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, .25);
+	transform: rotate(-0.025turn);
+	@include breakpoint(small only) {
+		max-width: 300px;
+    	margin-bottom: 25px;
+    	transform: rotate(-0.01turn);
+	}
+}
